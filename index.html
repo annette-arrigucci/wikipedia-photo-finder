@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Wikipedia Photo Finder</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans|Lora' rel='stylesheet' type='text/css'>
+</head>
+<body>
+	<header>
+		<h1>Wikipedia Photo Finder</h1>
+	</header>
+	<div class="search-panel">
+		<p>Enter a topic on Wikipedia to view all the images on that page</p>
+			<form>
+				<input type="text" id="topic-search">
+				<button id="search">Search topic</button>
+			</form>
+			<p>Viewing links from:<br><a id="url-search-result" href="https://en.wikipedia.org/wiki/Albert_Einstein" target="_blank">https://en.wikipedia.org/wiki/Albert_Einstein</a></p>
+	</div>
+	<div class="photo-display">
+		<div class="returned-photo">
+			<img src="https://upload.wikimedia.org/wikipedia/commons/d/d3/Albert_Einstein_Head.jpg" alt="photo-result" width="200">
+			<p><a href="https://en.wikipedia.org/wiki/Albert_Einstein#/media/File:Albert Einstein (Nobel).png" target="_blank">File:Albert Einstein (Nobel).png</a>
+			</p>
+		</div>
+		<div class="returned-photo">
+			<img src="https://upload.wikimedia.org/wikipedia/commons/a/ad/Albert_Einstein_as_a_child.jpg" alt="photo-result" width="200">
+			<p><a href="https://en.wikipedia.org/wiki/Albert_Einstein#/media/File:Albert_Einstein_as_a_child.jpg" alt="photo-result" target="_blank">File:Albert_Einstein_as_a_child.jpg</a>
+			</p>
+		</div>
+		<div class="returned-photo">
+			<img src="https://upload.wikimedia.org/wikipedia/commons/a/a0/Einstein_patentoffice.jpg" width="200">
+			<p><a href="https://en.wikipedia.org/wiki/Albert_Einstein#/media/File:Einstein_patentoffice.jpg" alt="photo-result" target="_blank">File:Einstein_patentoffice.jpg</a>
+			</p>
+		</div>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
+</body>
+</html>

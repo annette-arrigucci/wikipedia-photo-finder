@@ -1,0 +1,66 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+	background-color: #FFF;
+	font-family: 'Lora', Sans-Serif;
+}
+
+header {
+	width: 80%;
+	margin: 0 auto;
+	border: 10px solid #006666;
+	height: 12em;
+	border-radius: 10px;
+}
+
+h1, h2 {
+	font-family: 'Open Sans', Sans-Serif;
+}
+
+header h1 {
+	color: #006666;
+	text-align: center;
+	padding-top: 0.5em;
+	font-size: 3em;
+}
+
+.search-panel {
+	width: 50%;
+	margin: 0 auto;
+}
+
+.search-panel p {
+	font-size: 1.5em;
+	border: 2px solid #006666;
+	text-align: center;
+	padding: 1em;
+	margin-top: 1em;
+}
+
+.search-panel form {
+	width: 50%;
+	margin: 1em auto;
+	padding: 1em;
+}
+
+.photo-display {
+	width: 80%;
+	margin: 2em auto;
+	overflow: hidden;
+}
+
+.links-feed h1 {
+	text-align: center;
+}
+
+.returned-photo {
+	float: left;
+	margin: 2em auto;
+	padding: 2em;
+}
