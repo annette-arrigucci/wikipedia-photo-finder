@@ -17,12 +17,20 @@ $(document).ready(function(){
       		action: query,*/
       		success: function (x) {
       			var myTitle = x.query.search[0].title;
+      			alert(myTitle);
       			$.ajax(url, {
       				dataType: 'jsonp',
       				url: url,
       				data: { action: 'query', titles: myTitle, prop: 'images', format: 'json' },
       				success: function (y) {
-      					alert(y.query.pages);
+      					var myIndex = null;
+      					var myImagesArray = null;
+      					$.each(y.query.pages, function(index,item) {
+      						myImagesArray = item;
+      						$.each(item.images, function(index,item) {
+      							alert(item.title);
+      						});
+      					});
       				}
       			});
       		}
