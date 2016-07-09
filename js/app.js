@@ -16,8 +16,11 @@ $(document).ready(function(){
       		headers: {'Api-User-Agent': 'Example/1.0'},
       		action: query,*/
       		success: function (x) {
+      			$(".photo-display").empty();
       			var myTitle = x.query.search[0].title;
-      			alert(myTitle);
+      			var myWiki = "https://en.wikipedia.org/wiki/" + myTitle;
+      			$("#url-search-result").attr("href", myWiki);
+      			$("#url-search-result-name").text(myWiki);
       			$.ajax(url, {
       				dataType: 'jsonp',
       				url: url,
@@ -26,7 +29,6 @@ $(document).ready(function(){
       					
       					//put the pages object into an array so we can navigate to the pageid and access the images array
       					$.each(y.query.pages, function(index,item) {
-      						//myImagesArray = item;
       						getImages(item.images);
       					});
       				}
@@ -37,41 +39,30 @@ $(document).ready(function(){
 
 	function getImages(myImages) {
     	//given an array of image names, make API call to get image file info for each image
-    	//store the URL in an array then display the images on the page
-    	var myImageArrayUrls = [];
     	var url = "https://en.wikipedia.org/w/api.php";
+    	
     	$.each(myImages, function(index,item) {
     		var myTitle = item.title;
-    		//alert(myTitle);
       		$.ajax(	url, {
       				dataType: 'jsonp',
       				url: url,
       				data: { action: 'query', titles: myTitle, prop: 'imageinfo', iiprop: 'url', iiurlwidth: '220', format: 'json'},
       				success: function (y) {
-      					
       					//put the pages object into an array so we can navigate to the pageid and access the image info
+      					
       					$.each(y.query.pages, function(index,item) {
-      						//myImagesArray = item;
-      						//alert(index);
       						var myPhotoUrl = item.imageinfo[0].thumburl;
-      						//alert(myPhotoUrl);
-							myImageArrayUrls.push(myPhotoUrl);
-      						//alert(item.imageinfo.thumburl);
+      						//display the image
+      						showImage(myPhotoUrl);
       					});
-      					showImages(myImageArrayUrls);
+      					
       				}
       			});
       	});
-    	
-    	//alert(myImageArrayUrls[0]);
 	}
 
-	function showImages(imageUrls) {
-		$(".photo-display").empty();
-		$.each(imageUrls, function (index, item) {
-			//alert(item);
-			var myHtml = "<div class='returned-photo'><a href='" + item + "' target='_blank'><img src='" + item + "' alt='photo-result' width='200'></a></div>";
-			$(".photo-display").append(myHtml);
-		});
+	function showImage(imageUrl) {
+		var myHtml = "<div class='returned-photo'><a href='" + imageUrl + "' target='_blank'><img src='" + imageUrl + "' alt='photo-result' width='200'></a></div>";
+		$(".photo-display").append(myHtml);
 	}
 });
