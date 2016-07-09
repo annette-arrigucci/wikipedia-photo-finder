@@ -23,13 +23,11 @@ $(document).ready(function(){
       				url: url,
       				data: { action: 'query', titles: myTitle, prop: 'images', format: 'json' },
       				success: function (y) {
-      					var myIndex = null;
-      					var myImagesArray = null;
+      					
+      					//put the pages object into an array so we can navigate to the pageid and access the images array
       					$.each(y.query.pages, function(index,item) {
-      						myImagesArray = item;
-      						$.each(item.images, function(index,item) {
-      							alert(item.title);
-      						});
+      						//myImagesArray = item;
+      						getImages(item.images);
       					});
       				}
       			});
@@ -37,7 +35,36 @@ $(document).ready(function(){
       	});
 	}
 
-	function showResults(myResults) {
-    	
+	function getImages(myImages) {
+    	//given an array of image names, make API call to get image file info for each image
+    	//store the URL in an array then display the images on the page
+    	var myImageArrayUrls = [''];
+    	var url = "https://en.wikipedia.org/w/api.php";
+    	$.each(myImages, function(index,item) {
+    		var myTitle = item.title;
+    		//alert(myTitle);
+      		$.ajax(	url, {
+      				dataType: 'jsonp',
+      				url: url,
+      				data: { action: 'query', titles: myTitle, prop: 'imageinfo', iiprop: 'url', iiurlwidth: '220', format: 'json'},
+      				success: function (y) {
+      					
+      					//put the pages object into an array so we can navigate to the pageid and access the image info
+      					$.each(y.query.pages, function(index,item) {
+      						//myImagesArray = item;
+      						//alert(index);
+      						var myPhotoUrl = item.imageinfo[0].thumburl;
+      						alert(myPhotoUrl);
+							myImageArrayUrls.push(myPhotoUrl);
+      						//alert(item.imageinfo.thumburl);
+      					});
+      				}
+      			});
+      	});
+    	//showImages(myImageArrayUrls);
 	}
+
+	/*function showImages(imageUrls) {
+
+	}*/
 });
