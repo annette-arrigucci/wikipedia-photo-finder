@@ -38,7 +38,7 @@ $(document).ready(function(){
 	function getImages(myImages) {
     	//given an array of image names, make API call to get image file info for each image
     	//store the URL in an array then display the images on the page
-    	var myImageArrayUrls = [''];
+    	var myImageArrayUrls = [];
     	var url = "https://en.wikipedia.org/w/api.php";
     	$.each(myImages, function(index,item) {
     		var myTitle = item.title;
@@ -54,17 +54,24 @@ $(document).ready(function(){
       						//myImagesArray = item;
       						//alert(index);
       						var myPhotoUrl = item.imageinfo[0].thumburl;
-      						alert(myPhotoUrl);
+      						//alert(myPhotoUrl);
 							myImageArrayUrls.push(myPhotoUrl);
       						//alert(item.imageinfo.thumburl);
       					});
+      					showImages(myImageArrayUrls);
       				}
       			});
       	});
-    	//showImages(myImageArrayUrls);
+    	
+    	//alert(myImageArrayUrls[0]);
 	}
 
-	/*function showImages(imageUrls) {
-
-	}*/
+	function showImages(imageUrls) {
+		$(".photo-display").empty();
+		$.each(imageUrls, function (index, item) {
+			//alert(item);
+			var myHtml = "<div class='returned-photo'><a href='" + item + "' target='_blank'><img src='" + item + "' alt='photo-result' width='200'></a></div>";
+			$(".photo-display").append(myHtml);
+		});
+	}
 });
