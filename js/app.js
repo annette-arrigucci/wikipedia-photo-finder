@@ -51,9 +51,10 @@ $(document).ready(function(){
       					//put the pages object into an array so we can navigate to the pageid and access the image info
       					
       					$.each(y.query.pages, function(index,item) {
-      						var myPhotoUrl = item.imageinfo[0].thumburl;
+      						var myThumbUrl = item.imageinfo[0].thumburl;
+      						var myLargeUrl = item.imageinfo[0].url;
       						//display the image
-      						showImage(myPhotoUrl);
+      						showImage(myThumbUrl, myLargeUrl);
       					});
       					
       				}
@@ -61,8 +62,8 @@ $(document).ready(function(){
       	});
 	}
 
-	function showImage(imageUrl) {
-		var myHtml = "<div class='returned-photo'><a href='" + imageUrl + "' target='_blank'><img src='" + imageUrl + "' alt='photo-result' width='200'></a></div>";
+	function showImage(thumbImageUrl, largeImageUrl) {
+		var myHtml = "<div class='returned-photo'><a href='" + largeImageUrl + "' target='_blank'><img src='" + thumbImageUrl + "' alt='photo-result' width='200'></a></div>";
 		$(".photo-display").append(myHtml);
 	}
 });
