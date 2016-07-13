@@ -61,13 +61,11 @@ header h1 {
 
 .returned-photo {
 	float: left;
-	margin-top: 2em;
-	margin-bottom: 2em;
-	padding: 2em;
+	margin: 1em;
+	padding: 1em;
 	/*border: 1px solid black;*/
-	clear: right;
-	width: 200px;
-	height: 400px;
+	width: 230px;
+	height: 300px;
 }
 
 .returned-photo img {
