@@ -2,7 +2,13 @@ $(document).ready(function(){
 	$("#search").click(function(event) {
 		event.preventDefault();
 		var mySearchTerm = $("#topic-search").val();
-		getRequest(mySearchTerm);
+		if(mySearchTerm)
+		{
+			getRequest(mySearchTerm);
+		}
+		else {
+			alert("Please enter a search term");
+		}
 	});
 
 	

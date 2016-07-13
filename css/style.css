@@ -66,7 +66,11 @@ header h1 {
 	padding: 2em;
 	/*border: 1px solid black;*/
 	clear: right;
-	/*width: 200px;
-	height: 400px;*/
+	width: 200px;
+	height: 400px;
+}
+
+.returned-photo img {
+	max-height: 100%;
 }
 
