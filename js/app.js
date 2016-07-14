@@ -22,23 +22,28 @@ $(document).ready(function(){
       		headers: {'Api-User-Agent': 'Example/1.0'},
       		action: query,*/
       		success: function (x) {
-      			$(".photo-display").empty();
-      			var myTitle = x.query.search[0].title;
-      			var myWiki = "https://en.wikipedia.org/wiki/" + myTitle;
-      			$("#url-search-result").attr("href", myWiki);
-      			$("#url-search-result-name").text(myWiki);
-      			$.ajax(url, {
-      				dataType: 'jsonp',
-      				url: url,
-      				data: { action: 'query', titles: myTitle, prop: 'images', format: 'json' },
-      				success: function (y) {
-      					
-      					//put the pages object into an array so we can navigate to the pageid and access the images array
-      					$.each(y.query.pages, function(index,item) {
-      						getImages(item.images);
-      					});
-      				}
-      			});
+      			if(x.query.search.length == 0) {
+      				alert ("Your search did not return any results")
+      			}
+      			else {
+      				$(".photo-display").empty();
+      				var myTitle = x.query.search[0].title;
+      				var myWiki = "https://en.wikipedia.org/wiki/" + myTitle;
+      				$("#url-search-result").attr("href", myWiki);
+      				$("#url-search-result-name").text(myWiki);
+      				$.ajax(url, {
+      					dataType: 'jsonp',
+      					url: url,
+      					data: { action: 'query', titles: myTitle, prop: 'images', format: 'json' },
+      					success: function (y) {
+      						
+      						//put the pages object into an array so we can navigate to the pageid and access the images array
+      						$.each(y.query.pages, function(index,item) {
+      							getImages(item.images);
+      						});
+      					}
+      				});
+      			}
       		}
       	});
 	}
