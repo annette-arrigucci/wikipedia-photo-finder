@@ -44,7 +44,6 @@ $(document).ready(function(){
       					}
       				});
       			}
-=======
       			$(".photo-display").empty();
       			var myTitle = x.query.search[0].title;
       			$("#photo-link").show();
