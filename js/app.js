@@ -24,9 +24,11 @@ $(document).ready(function(){
       		success: function (x) {
       			$(".photo-display").empty();
       			var myTitle = x.query.search[0].title;
+      			$("#photo-link").show();
+      			$("#topic-search").val('');
       			var myWiki = "https://en.wikipedia.org/wiki/" + myTitle;
       			$("#url-search-result").attr("href", myWiki);
-      			$("#url-search-result-name").text(myWiki);
+      			$("#url-search-result-name").text(myTitle);
       			$.ajax(url, {
       				dataType: 'jsonp',
       				url: url,
