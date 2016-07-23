@@ -66,6 +66,10 @@ header h1 {
 	header {
 		width: 80%;
 	}
+	.returned-photo {
+	   float: none !important;
+	   margin: 0.5em auto !important;
+	 }
 }
 
 .photo-display {
